@@ -1,0 +1,188 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwpglw7u3mgjh"]
+
+[ext_resource type="Script" path="res://Scripts/RPS/RockPaperScissors.cs" id="1_ugrdk"]
+[ext_resource type="Script" path="res://Scripts/RPS/RPSButton.cs" id="2_f8oeg"]
+
+[node name="RockPaperScissors" type="Control" node_paths=PackedStringArray("player1ChoiceDisplay", "player2ChoiceDisplay", "resultLabel", "promptLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ugrdk")
+player1ChoiceDisplay = NodePath("CenterContainer/Panel/Displays/Player1Container/Player1ChoiceDisplay")
+player2ChoiceDisplay = NodePath("CenterContainer/Panel/Displays/Player2Container/Player2ChoiceDisplay")
+resultLabel = NodePath("CenterContainer/Panel/ResultLabel")
+promptLabel = NodePath("CenterContainer/Panel/PromptLabel")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -253.5
+offset_top = 20.0
+offset_right = 253.5
+offset_bottom = 66.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "CAPTURE CHALLENGE!"
+horizontal_alignment = 1
+
+[node name="Instructions" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -322.0
+offset_top = 70.0
+offset_right = 322.0
+offset_bottom = 116.0
+grow_horizontal = 2
+text = "Win Rock Paper Scissors to complete your capture!"
+horizontal_alignment = 1
+
+[node name="PromptLabel" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -322.0
+offset_top = 110.0
+offset_right = 322.0
+offset_bottom = 136.0
+grow_horizontal = 2
+text = "Choose your weapon!"
+horizontal_alignment = 1
+
+[node name="ResultLabel" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = 60.0
+offset_right = 116.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="Choices" type="HBoxContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -30.0
+offset_right = 340.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RockButton" type="Button" parent="CenterContainer/Panel/Choices" node_paths=PackedStringArray("rpsGame")]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+text = "ROCK"
+script = ExtResource("2_f8oeg")
+choiceType = 1
+rpsGame = NodePath("../../../..")
+
+[node name="PaperButton" type="Button" parent="CenterContainer/Panel/Choices" node_paths=PackedStringArray("rpsGame")]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+text = "PAPER"
+script = ExtResource("2_f8oeg")
+choiceType = 2
+rpsGame = NodePath("../../../..")
+
+[node name="ScissorsButton" type="Button" parent="CenterContainer/Panel/Choices" node_paths=PackedStringArray("rpsGame")]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+text = "SCISSORS"
+script = ExtResource("2_f8oeg")
+choiceType = 3
+rpsGame = NodePath("../../../..")
+
+[node name="Displays" type="HBoxContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -140.0
+offset_right = 300.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Player1Container" type="VBoxContainer" parent="CenterContainer/Panel/Displays"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/Displays/Player1Container"]
+layout_mode = 2
+text = "Your choice"
+horizontal_alignment = 1
+
+[node name="Player1ChoiceDisplay" type="TextureRect" parent="CenterContainer/Panel/Displays/Player1Container"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VSLabel" type="Label" parent="CenterContainer/Panel/Displays"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "VS"
+
+[node name="Player2Container" type="VBoxContainer" parent="CenterContainer/Panel/Displays"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/Displays/Player2Container"]
+layout_mode = 2
+text = "Computer choice"
+horizontal_alignment = 1
+
+[node name="Player2ChoiceDisplay" type="TextureRect" parent="CenterContainer/Panel/Displays/Player2Container"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AutoPlayTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="AutoPlayTimer" to="." method="_on_auto_play_timer_timeout"]
